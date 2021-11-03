@@ -2,19 +2,62 @@
 //
 
 #include <iostream>
+using namespace std;
 
-int main()
+
+class ChairMan
 {
-    std::cout << "Hello World!\n";
+	ChairMan() {};
+	ChairMan(const ChairMan& obj) {};
+	static ChairMan* pINSTANCE;
+public:
+	static ChairMan* GetInstance()
+	{
+		return pINSTANCE;
+	}
+};
+ChairMan* ChairMan::pINSTANCE = new ChairMan;//静态变量，类外初始化
+
+int main1()
+{
+	
+    /*ChairMan c1;
+	ChairMan c2;
+	ChairMan *pc = new ChairMan;*/
+	/*ChairMan* p1 = ChairMan::pINSTANCE;
+	ChairMan* p2 = ChairMan::pINSTANCE;
+
+	if (p1 == p2)
+	{
+		cout << "p1p2相等" << endl;
+	}
+	else
+	{
+		cout << "p1p2不相等" << endl;
+
+	}*/
+	ChairMan* p1 = ChairMan::GetInstance();
+	ChairMan* p2 = ChairMan::GetInstance();
+	//ChairMan* p3 = new ChairMan(*p1);//使用p1的值来复制p3, 需要禁用
+	if (p1 == p2)
+	{
+		cout << "p1p2相等" << endl;
+	}
+	else
+	{
+		cout << "p1p2不相等" << endl;
+
+	}
+
+	/*if (p1 == p3)
+	{
+		cout << "p1p3相等" << endl;
+	}
+	else
+	{
+		cout << "p1p3不相等" << endl;
+
+	}*/
+    return 0;
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
